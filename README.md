@@ -1,59 +1,90 @@
-# Restaurant_reservation
+# Restaurant Reservation Management System
 
-El proyecto consiste en un sistema de reservas para un restaurante desarrollado en Java. La aplicación ha sido creada utilizando programación orientada a objetos y una interfaz gráfica realizada con la librería Swing. El objetivo principal del programa es permitir gestionar reservas de clientes de una forma sencilla, organizada y visual.
+Java project developed using Object-Oriented Programming, Swing for the graphical interface, and text file persistence for data storage.
 
-El usuario puede crear reservas introduciendo diferentes datos desde la interfaz gráfica, como:
+The application simulates a reservation management system for a restaurant, allowing users to create and manage reservations in a simple and organized way.
 
-nombre del cliente
-fecha de la reserva
-hora
-número de comensales
-tipo de zona, pudiendo elegir entre terraza o interior
+---
 
-Cada vez que se crea una reserva, el sistema calcula automáticamente un depósito de 5 euros por cada comensal. Este depósito se considera una señal para confirmar la reserva. Además, el programa contempla la posibilidad de que el cliente no se presente al restaurante; en ese caso, el restaurante conserva el dinero del depósito.
+# Overview
 
-El proyecto está dividido en varias clases para organizar correctamente el código y aplicar los conceptos vistos en clase. Existe una clase principal llamada Reserva, que almacena la información común de cualquier reserva, como el nombre, la fecha o el número de comensales. A partir de esta clase se crean dos clases hijas:
+The system allows users to:
 
-ReservaInterior
-ReservaTerraza
+- Create reservations
+- Select indoor or terrace seating
+- Automatically calculate reservation deposits
+- Cancel reservations
+- Mark customers as no-shows
+- Display reservations in a table
+- Save and load reservations from a text file
 
-Estas clases heredan los atributos y métodos de la clase padre utilizando herencia, evitando repetir código y haciendo el programa más organizado.
+Each reservation requires a deposit of **5€ per guest**. If a customer does not attend the reservation, the restaurant keeps the deposit.
 
-También se utiliza un ArrayList para almacenar todas las reservas creadas durante la ejecución del programa. Gracias a esto, el sistema puede manejar múltiples reservas dinámicamente.
+---
 
-Para la interfaz gráfica se ha utilizado Swing, empleando componentes como:
+# Features
 
-JFrame
-JButton
-JTextField
-JTable
-JComboBox
-JOptionPane
+- Graphical user interface built with Swing
+- Reservation management using ArrayList
+- Automatic deposit calculation
+- Reservation status management
+- File persistence using `.txt` files
+- Data loading at application startup
 
-La ventana principal permite:
+---
 
-crear nuevas reservas
-visualizar todas las reservas en una tabla
-cancelar reservas
-marcar clientes como “no presentados”
-guardar la información
+# Technologies Used
 
-Uno de los aspectos más importantes del proyecto es la persistencia de datos. Todas las reservas se guardan en un fichero de texto plano llamado reservas.txt. Cuando el usuario pulsa el botón de guardar, el programa recorre el ArrayList y escribe cada reserva en una línea del fichero. Posteriormente, cuando el programa vuelve a iniciarse, el sistema lee automáticamente el archivo y recupera todas las reservas guardadas anteriormente.
+- Java
+- Swing
+- Object-Oriented Programming
+- ArrayList Collections
+- File Handling (`BufferedReader` / `BufferedWriter`)
 
-Además, el programa utiliza un enum llamado EstadoReserva para controlar el estado de cada reserva. Los posibles estados son:
+---
 
-CONFIRMADA
-CANCELADA
-NO_PRESENTADO
+# Object-Oriented Structure
 
-En general, el proyecto permite aplicar muchos de los conceptos trabajados en clase, como:
+The project is divided into several classes to keep the code organized and modular.
 
-programación orientada a objetos
-clases y objetos
-herencia
-colecciones
-manejo de ficheros
-interfaces gráficas
-eventos y botones en Swing
+## Main Classes
 
-El resultado final es una aplicación sencilla pero funcional, que simula un sistema real de gestión de reservas para un restaurante.
+### `Main`
+Starts the application and launches the main window.
+
+### `VentanaPrincipal`
+Contains the graphical interface and user interactions.
+
+### `Reserva`
+Abstract parent class containing the common reservation data.
+
+### `ReservaInterior`
+Represents indoor reservations.
+
+### `ReservaTerraza`
+Represents terrace reservations.
+
+### `GestorReservas`
+Handles reservation management and file operations.
+
+### `EstadoReserva`
+Enum used to manage reservation states:
+- CONFIRMADA
+- CANCELADA
+- NO_PRESENTADO
+
+---
+
+# Implemented Concepts
+
+## Object-Oriented Programming
+- Classes and objects
+- Constructors
+- Methods
+- Encapsulation
+
+## Inheritance
+The project uses inheritance to avoid duplicated code:
+
+```java id="87pbhq"
+public class ReservaInterior extends Reserva
